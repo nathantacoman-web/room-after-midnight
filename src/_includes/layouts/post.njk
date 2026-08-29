@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+---
+<main id="main-content" class="site-shell">
+  <article>
+    <header class="article-header">
+      <div class="post-labels">
+        <span class="post-category">{{ category or "Notes" }}</span>
+        {% if movieYear %}<span class="post-note">{{ movieYear }}</span>{% endif %}
+        {% if projectStatus %}<span class="post-note">{{ projectStatus }}</span>{% endif %}
+        {% if placeholder %}<span class="post-note">Sample post</span>{% endif %}
+      </div>
+      <h1>{{ title }}</h1>
+      {% if description %}<p class="article-deck">{{ description }}</p>{% endif %}
+      <time class="article-date" datetime="{{ date | htmlDate }}">{{ date | shortDate }}</time>
+    </header>
+
+    <div class="article-body">
+      {% if featuredImage %}
+        <figure>
+          <img src="{{ featuredImage }}" alt="{{ featuredImageAlt or '' }}" loading="lazy" decoding="async">
+          {% if featuredImageCaption %}<figcaption>{{ featuredImageCaption }}</figcaption>{% endif %}
+        </figure>
+      {% endif %}
+      {{ content | safe }}
+    </div>
+  </article>
+
+  <div class="article-footer">
+    <a class="back-link" href="/archive/">← Back to the archive</a>
+  </div>
+</main>

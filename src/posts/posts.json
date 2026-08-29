@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/post.njk",
+  "pageKey": "archive",
+  "pageType": "article",
+  "permalink": "/posts/{{ page.fileSlug }}/index.html"
+}

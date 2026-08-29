@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: Archive
+pageKey: archive
+permalink: /archive/
+description: A chronological archive of writing.
+---
+<main id="main-content" class="site-shell">
+  <header class="page-heading">
+    <h1>Archive</h1>
+    <p>Everything, in reverse chronological order.</p>
+  </header>
+
+  <div class="archive">
+    {% for group in collections.posts | groupByYear %}
+      <section class="archive-year" aria-labelledby="year-{{ group.year }}">
+        <h2 id="year-{{ group.year }}">{{ group.year }}</h2>
+        <ol class="archive-list">
+          {% for post in group.posts %}
+            <li>
+              <time datetime="{{ post.date | htmlDate }}">{{ post.date | archiveDate }}</time>
+              <a href="{{ post.url }}">{{ post.data.title }}{% if post.data.placeholder %} <span class="archive-note">Sample</span>{% endif %}</a>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    {% endfor %}
+  </div>
+</main>

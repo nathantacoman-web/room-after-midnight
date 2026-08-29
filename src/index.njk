@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Home
+pageKey: home
+permalink: /
+---
+{% from "components/post-list.njk" import render as postList %}
+<main id="main-content">
+  <div class="site-shell">
+    <section class="intro" aria-labelledby="home-title">
+      <span class="intro-mark" aria-hidden="true"></span>
+      <h1 id="home-title">{{ site.tagline }}</h1>
+    </section>
+
+    <section aria-labelledby="latest-title">
+      <div class="section-heading">
+        <h2 id="latest-title">Latest</h2>
+        <a href="/archive/">View the archive</a>
+      </div>
+      {{ postList(collections.posts | limit(5)) }}
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div>
+        <h2 id="newsletter-title">Get new stuff by email.</h2>
+        <p>Occasional notes. No schedule, no noise.</p>
+      </div>
+      <form data-newsletter-form>
+        <div class="signup-row">
+          <label class="skip-link" for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <p class="form-message" data-form-message aria-live="polite"></p>
+      </form>
+    </section>
+  </div>
+</main>

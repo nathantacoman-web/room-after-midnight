@@ -1,0 +1,19 @@
+{% macro render(items) %}
+  <ol class="post-list">
+    {% for post in items %}
+      <li class="post-preview">
+        <div class="post-meta">
+          <div class="post-labels">
+            <span class="post-category">{{ post.data.category or "Notes" }}</span>
+            {% if post.data.placeholder %}<span class="post-note">Sample</span>{% endif %}
+          </div>
+          <time datetime="{{ post.date | htmlDate }}">{{ post.date | shortDate }}</time>
+        </div>
+        <div>
+          <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+{% endmacro %}

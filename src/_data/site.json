@@ -1,0 +1,16 @@
+{
+  "name": "Room After Midnight",
+  "tagline": "Movies, thoughts, projects, anything.",
+  "author": "Nate",
+  "description": "A personal publication about movies, projects, observations, and whatever comes next.",
+  "url": "https://roomaftermidnight.com",
+  "urlIsPlaceholder": false,
+  "socialImage": "",
+  "navigation": [
+    { "label": "Home", "url": "/", "key": "home" },
+    { "label": "Movies", "url": "/movies/", "key": "movies" },
+    { "label": "Projects", "url": "/projects/", "key": "projects" },
+    { "label": "Archive", "url": "/archive/", "key": "archive" },
+    { "label": "About", "url": "/about/", "key": "about" }
+  ]
+}
