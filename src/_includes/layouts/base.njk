@@ -27,6 +27,9 @@
   <meta name="twitter:title" content="{{ documentTitle }}">
   <meta name="twitter:description" content="{{ pageDescription }}">
   {% if socialImageUrl %}<meta name="twitter:image" content="{{ socialImageUrl | absoluteUrl(site.url) }}">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
   <!-- MailerLite Universal -->
@@ -43,7 +46,11 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="site-shell header-inner">
-      <a class="masthead" href="/">{{ site.name }}</a>
+      <a class="masthead" href="/" aria-label="{{ site.name }}">
+        <span>Room</span>
+        <span>After</span>
+        <span>Midnight</span>
+      </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <ul>
           {% for item in site.navigation %}

@@ -101,7 +101,9 @@ for (const filePath of htmlFiles) {
 
   const images = html.match(/<img\b[^>]*>/gi) || [];
   for (const image of images) {
-    if (!/\balt=["'][^"']*["']/i.test(image)) addError(`${label}: an image is missing an alt attribute.`);
+    const alt = image.match(/\balt=["']([^"']*)["']/i);
+    if (!alt) addError(`${label}: an image is missing an alt attribute.`);
+    else if (!alt[1].trim()) addError(`${label}: an image is missing meaningful alt text.`);
   }
 
   const references = html.matchAll(/(?:href|src)=["']([^"']+)["']/gi);

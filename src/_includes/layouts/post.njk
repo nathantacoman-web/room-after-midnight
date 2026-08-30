@@ -15,13 +15,16 @@ layout: layouts/base.njk
       <time class="article-date" datetime="{{ date | htmlDate }}">{{ date | shortDate }}</time>
     </header>
 
+    {% if heroImage or featuredImage %}
+      <figure class="article-hero">
+        <div class="article-hero-media">
+          <img src="{{ heroImage or featuredImage }}" alt="{{ heroAlt or featuredImageAlt or '' }}" loading="eager" decoding="async">
+        </div>
+        {% if heroImageCaption or featuredImageCaption %}<figcaption>{{ heroImageCaption or featuredImageCaption }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+
     <div class="article-body">
-      {% if featuredImage %}
-        <figure>
-          <img src="{{ featuredImage }}" alt="{{ featuredImageAlt or '' }}" loading="lazy" decoding="async">
-          {% if featuredImageCaption %}<figcaption>{{ featuredImageCaption }}</figcaption>{% endif %}
-        </figure>
-      {% endif %}
       {{ content | safe }}
     </div>
   </article>

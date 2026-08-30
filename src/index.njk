@@ -9,13 +9,13 @@ permalink: /
   <div class="site-shell">
     <section class="intro" aria-labelledby="home-title">
       <span class="intro-mark" aria-hidden="true"></span>
-      <h1 id="home-title">{{ site.tagline }}</h1>
+      <h1 id="home-title">Movies, thoughts, projects,<br class="intro-desktop-break"> and more.</h1>
     </section>
 
     <section aria-labelledby="latest-title">
       <div class="section-heading">
         <h2 id="latest-title">Latest</h2>
-        <a href="/archive/">View the archive</a>
+        <a href="/archive/">View the archive →</a>
       </div>
       {{ postList(collections.posts | limit(5)) }}
     </section>
