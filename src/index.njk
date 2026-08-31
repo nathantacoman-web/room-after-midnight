@@ -6,13 +6,18 @@ permalink: /
 ---
 {% from "components/post-list.njk" import render as postList %}
 <main id="main-content">
-  <div class="site-shell">
-    <section class="intro" aria-labelledby="home-title">
-      <span class="intro-mark" aria-hidden="true"></span>
-      <h1 id="home-title">Movies, thoughts, projects,<br class="intro-desktop-break"> and more.</h1>
-    </section>
+  <section class="homepage-hero" aria-labelledby="home-title">
+    <img src="/assets/images/room-after-midnight-hero.jpg" alt="Out-of-focus city lights glowing beneath a blue and pink evening sky." width="2700" height="1800" fetchpriority="high">
+    <div class="site-shell homepage-hero-inner">
+      <div class="intro">
+        <span class="intro-mark" aria-hidden="true"></span>
+        <h1 id="home-title">Movies, thoughts, projects,<br class="intro-desktop-break"> and more.</h1>
+      </div>
+    </div>
+  </section>
 
-    <section aria-labelledby="latest-title">
+  <div class="site-shell homepage-content">
+    <section class="latest-section" aria-labelledby="latest-title">
       <div class="section-heading">
         <h2 id="latest-title">Latest</h2>
         <a href="/archive/">View the archive →</a>
@@ -20,51 +25,37 @@ permalink: /
       {{ postList(collections.posts | limit(5)) }}
     </section>
 
+    <section class="tonights-stack" aria-labelledby="tonights-stack-title">
+      <div class="section-heading">
+        <h2 id="tonights-stack-title">Tonight’s Stack</h2>
+      </div>
+      <ol class="stack-list">
+        <li class="stack-entry">
+          <span class="eyebrow">Movie</span>
+          <h3>Dredd</h3>
+          <p>Gritty, brutal sci-fi action.</p>
+        </li>
+        <li class="stack-entry">
+          <span class="eyebrow">Movie</span>
+          <h3>Superbad</h3>
+          <p>One of the great hangout comedies.</p>
+        </li>
+        <li class="stack-entry">
+          <span class="eyebrow">Movie</span>
+          <h3>Everybody Wants Some!!</h3>
+          <p>Pure good-time hangout energy.</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="newsletter" aria-labelledby="newsletter-title">
       <div>
         <h2 id="newsletter-title">Get new stuff by email.</h2>
         <p>Occasional notes. No schedule, no noise.</p>
       </div>
-      <div id="mlb2-45356337" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-45356337">
-        <div class="ml-form-embedBody row-form">
-          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2604337/forms/197188320852182573/subscribe" method="post">
-            <div class="signup-row">
-              <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                <label class="visually-hidden" for="newsletter-email">Email address</label>
-                <input id="newsletter-email" name="fields[email]" type="email" autocomplete="email" placeholder="you@example.com" required>
-                <p class="ml-field-error-message" aria-live="polite"></p>
-              </div>
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Subscribe</button>
-                <button type="button" class="loading" disabled style="display: none;">
-                  <span class="visually-hidden">Submitting…</span>
-                  <span aria-hidden="true">Submitting…</span>
-                </button>
-              </div>
-            </div>
-            <div class="ml-form-recaptcha ml-validate-required">
-              <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-            </div>
-            <input type="hidden" name="ml-submit" value="1">
-            <input type="hidden" name="anticsrf" value="true">
-            <p class="form-message ml-server-error d-none" aria-live="polite"></p>
-          </form>
-        </div>
-        <div class="ml-form-successBody row-success" style="display: none;" aria-live="polite">
-          <p class="form-message">Almost there. Check your inbox to confirm your subscription.</p>
-        </div>
+      <div class="beehiiv-embed">
+        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="2b1cfe30-29a4-4ff8-a401-2edf53bcb5a5"></script>
       </div>
     </section>
   </div>
 </main>
-
-<script>
-  function ml_webform_success_45356337() {
-    var form = document.querySelector('.ml-subscribe-form-45356337');
-    if (!form) return;
-    form.querySelector('.row-form').style.display = 'none';
-    form.querySelector('.row-success').style.display = '';
-  }
-</script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519"></script>

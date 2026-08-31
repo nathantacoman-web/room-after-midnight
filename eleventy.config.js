@@ -25,6 +25,7 @@ function absoluteUrl(url, siteUrl) {
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "script.js": "script.js" });
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   eleventyConfig.addGlobalData("buildYear", () => new Date().getFullYear());
 

@@ -29,18 +29,9 @@
   {% if socialImageUrl %}<meta name="twitter:image" content="{{ socialImageUrl | absoluteUrl(site.url) }}">{% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
-  <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2604337');
-  </script>
-  <!-- End MailerLite Universal -->
 </head>
 <body data-page="{{ pageKey }}">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -50,6 +41,12 @@
         <span>Room</span>
         <span>After</span>
         <span>Midnight</span>
+        {% if pageKey == "home" %}
+          <svg class="masthead-streetlight" viewBox="0 0 64 70" aria-hidden="true" focusable="false">
+            <path d="M8 68V17C8 10.4 13.4 5 20 5h32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+            <path d="M48.5 0.5H64l-3.25 11h-9L48.5 6z" fill="currentColor" />
+          </svg>
+        {% endif %}
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <ul>
