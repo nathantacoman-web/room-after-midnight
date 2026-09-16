@@ -31,11 +31,12 @@ async function main() {
 
   try {
     const title = (await prompt.question("Title: ")).trim();
-    const category = (await prompt.question("Category [Thoughts]: ")).trim() || "Thoughts";
+    const suppliedCategory = (await prompt.question("Category (Movies or Essays): ")).trim().toLowerCase();
+    const category = /^movies?$/.test(suppliedCategory) ? "Movies" : /^essays?$/.test(suppliedCategory) ? "Essays" : "";
     const description = (await prompt.question("Description: ")).trim();
-    const suppliedDate = (await prompt.question("Date YYYY-MM-DD [today]: ")).trim();
-    const date = suppliedDate || new Date().toISOString().slice(0, 10);
+    const date = (await prompt.question("Publication date YYYY-MM-DD: ")).trim();
 
+    if (!category) throw new Error("Choose Movies or Essays.");
     if (!title) throw new Error("A title is required.");
     if (!description) throw new Error("A description is required.");
     if (!isValidDate(date)) throw new Error("Use a valid date in YYYY-MM-DD format.");
@@ -54,9 +55,9 @@ async function main() {
       `date: ${date}`,
       `category: ${JSON.stringify(category)}`,
       `description: ${JSON.stringify(description)}`,
+      "draft: true",
       "---",
       "",
-      "Write your article here.",
       ""
     ].join("\n");
 

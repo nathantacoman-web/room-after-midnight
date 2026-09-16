@@ -36,42 +36,33 @@ Or build and check in one command:
 npm run verify
 ```
 
-## Publish a post
+## Add real content
 
-Create Markdown files in `src/posts/`. The filename becomes the URL, so `src/posts/stormy-weather.md` publishes to `/posts/stormy-weather/`.
+The site currently has no published posts or recommendations. Empty homepage modules and category lists are hidden. Projects is retained as an unpublished template for later use.
 
-You can create a post manually with front matter like this:
+### Movie articles and essays
 
-```md
----
-title: "Stormy Weather"
-date: 2026-08-27
-category: "Thoughts"
-description: "There's nothing like a good storm when you've got somewhere safe to be."
----
+Create a Markdown file in `src/posts/`. Its filename determines its URL: `/posts/<filename>/index.html` (also accessible as `/posts/<filename>/`). Keep filenames stable after publishing.
 
-Write your article here.
-```
+Supply YAML front matter with your actual `title`, `date` (YYYY-MM-DD), `category`, and `description`, followed by the actual article text. Use `category: Movies` for movie articles or `category: Essays` for essays on any subject. Singular Movie/Essay and lowercase forms also work.
 
-Or run:
+Set `draft: true` while writing. Drafts and posts marked `placeholder: true` generate no public page and are excluded from the homepage, category pages, archive, feed, and sitemap. Remove `draft` or set it to `false` when ready to publish.
 
-```bash
-npm run new-post
-```
+You can also run `npm run new-post`. It asks for your actual title, category, description, and publication date, refuses to overwrite existing files, and creates an unpublished draft with an empty body. It does not invent a date or article text.
 
-The prompt asks for a title, category, description, and an optional date. Leaving the date blank uses today. It creates a correctly formatted file in `src/posts/` and refuses to overwrite an existing post.
+The five newest published movie articles appear in Fresh Off the Press. If no movie articles are published, that section is hidden. Essays appear on Essays, in the Archive, and in the Atom feed, with their article URLs unchanged. Movie articles and essays share the existing article layout.
 
-Posts appear automatically in the Archive and the five newest appear on Home. Use `category: "Movies"` to include a post in Movie Writing, or `category: "Projects"` to include it in Project Updates. Other categories stay in the mixed Home feed and Archive.
+### Featured homepage article
 
-For a featured image, add these fields to a post and keep the image file in a passthrough-copied public location when you add one:
+Add `featured: true` to a published movie article. If multiple movie articles are flagged, the newest is featured. If none is flagged, the spotlight section is hidden. Essays are excluded from the homepage spotlight.
 
-```yaml
-featuredImage: "/images/storm.jpg"
-featuredImageAlt: "Rain moving across a dark window"
-featuredImageCaption: "A storm arriving."
-```
+Optional image fields are `featuredImage` (a public path under `/assets/`), `featuredImageAlt` (meaningful alt text), and `featuredImageCaption` (your actual caption). Place image files in `src/assets/`; Eleventy copies them to `_site/assets/`. Existing `heroImage`, `heroAlt`, and `heroImageCaption` fields are also supported. A featured post without an image uses a text-only layout rather than sample artwork. No image is required to publish.
 
-`featuredImageAlt` is important: describe meaningful images, or deliberately use an empty alt only for a decorative image.
+### Tonight’s Stack
+
+Edit `src/_data/recommendations.json`, currently an empty array. Add one object per real recommendation with `title` (movie title) and `description` (your short one-line recommendation). Array order controls display order; numbering is automatic. Three entries work well, but no minimum or filler is required. These recommendations need no post, date, image, or URL and do not appear in the article feed or archive. An empty array hides Tonight’s Stack.
+
+Run `npm run verify` before publishing. Clean `_site/` before checking after removing posts so old generated files do not linger.
 
 ## Branding, colors, and launch configuration
 
@@ -79,13 +70,18 @@ The site name, tagline, author, navigation, social image, and production URL liv
 
 `site.url` is `https://drivewayavenue.com`. That one setting supplies canonical URLs, the Atom feed, sitemap URLs, robots.txt sitemap reference, and social metadata.
 
-Change the dusty-blue accent palette in the custom properties at the top of `style.css`:
+The print-inspired design uses warm paper, near-black ink, brick red, sun-faded yellow, and a smaller dusty-blue accent. Adjust the palette in the custom properties at the top of `style.css`:
 
 ```css
---color-accent
---color-accent-deep
---color-accent-light
+--paper
+--paper-deep
+--ink
+--red
+--yellow
+--blue
 ```
+
+The typography pairs Barlow Condensed display lettering, Source Serif 4 editorial text, Libre Franklin labels, and restrained Caveat annotations. An original SVG supplies subtle paper grain; the contact-sheet composition uses the featured article’s own image when supplied. Mobile layouts stack the spread and simplify offsets.
 
 The reusable HTML shell is in `src/_includes/layouts/base.njk`, article pages use `src/_includes/layouts/post.njk`, and Eleventy configuration lives in `eleventy.config.js`.
 

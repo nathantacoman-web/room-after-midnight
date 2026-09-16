@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ pageDescription }}">
-  <meta name="theme-color" content="#171816">
+  <meta name="theme-color" content="#f2ecdd">
   {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <title>{{ documentTitle }}</title>
   <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
@@ -29,26 +29,29 @@
   {% if socialImageUrl %}<meta name="twitter:image" content="{{ socialImageUrl | absoluteUrl(site.url) }}">{% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
 </head>
 <body data-page="{{ pageKey }}">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <div class="site-shell header-inner">
-      <a class="masthead" href="/" aria-label="{{ site.name }}">
-        <span>Driveway</span>
-        <span>Avenue</span>
-      </a>
+    <div class="site-shell">
+      <div class="utility-bar">
+        <span>VISIONS AND DREAMS COME TO LIFE</span>
+        <a href="/feed.xml">The feed ↗</a>
+      </div>
+      <div class="header-inner">
+        <a class="masthead" href="/" aria-label="{{ site.name }}"><span>Driveway</span> <span>Avenue</span><span class="masthead-dot" aria-hidden="true">.</span></a>
+        <p class="publication-note">“Cinema is the most beautiful fraud in the world.”<span class="publication-attribution">— Jean-Luc Godard</span></p>
+      </div>
       <nav class="site-nav" aria-label="Primary navigation">
         <ul>
           {% for item in site.navigation %}
-            <li>
-              <a href="{{ item.url }}"{% if item.key == pageKey %} aria-current="page"{% endif %}>{{ item.label }}</a>
-            </li>
+            <li><a href="{{ item.url }}"{% if item.key == pageKey %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
           {% endfor %}
         </ul>
+        <a class="nav-subscribe" href="{% if pageKey == 'home' %}#newsletter-title{% else %}/#newsletter-title{% endif %}">Letters by email ↓</a>
       </nav>
     </div>
   </header>
@@ -56,9 +59,13 @@
   {{ content | safe }}
 
   <footer class="site-footer">
-    <div class="site-shell footer-inner">
-      <span>© {{ buildYear }} {{ site.name }}</span>
-      <span>Written and made by {{ site.author }}.</span>
+    <div class="site-shell">
+      <div class="footer-top">
+        <a class="footer-brand" href="/">Driveway<br>Avenue<span aria-hidden="true">.</span></a>
+        <p>Movies, thoughts, projects,<br>and more.</p>
+        <nav aria-label="Footer navigation"><a href="/about/">About the publication ↗</a><a href="/archive/">All the writing ↗</a><a href="/feed.xml">Atom feed ↗</a></nav>
+      </div>
+      <div class="footer-inner"><span>© {{ buildYear }} {{ site.name }}</span><span>Written and made by {{ site.author }}.</span><span>drivewayavenue.com</span></div>
     </div>
   </footer>
 </body>

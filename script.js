@@ -1,12 +1,22 @@
 (function () {
   "use strict";
 
-  const newsletter = document.querySelector("[data-newsletter-form]");
-  if (newsletter) {
-    newsletter.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const message = newsletter.querySelector("[data-form-message]");
-      if (message) message.textContent = "Thanks — subscriptions will open soon.";
-    });
+  // Beehiiv inserts its form asynchronously; give the frame an accessible name.
+  const embed = document.querySelector(".beehiiv-embed");
+  if (!embed) return;
+
+  function nameForm() {
+    const frame = embed.querySelector("iframe");
+    if (!frame) return false;
+    if (!frame.getAttribute("title")) {
+      frame.setAttribute("title", "Driveway Avenue email subscription form");
+    }
+    return true;
   }
+
+  if (nameForm()) return;
+  const observer = new MutationObserver(() => {
+    if (nameForm()) observer.disconnect();
+  });
+  observer.observe(embed, { childList: true, subtree: true });
 })();

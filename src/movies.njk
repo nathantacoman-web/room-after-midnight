@@ -12,23 +12,12 @@ description: Movies watched and writing about film.
     <p>Movies I've watched, loved, hated, or felt like talking about.</p>
   </header>
 
-  <section class="feature-section" aria-labelledby="watched-title">
-    <div class="section-heading">
-      <h2 id="watched-title">Recently Watched</h2>
-    </div>
-    <ol class="watch-list">
-      <li class="watch-item"><span class="watch-title">Perfect Days</span><span class="watch-year">2023</span><span class="watch-reaction">Loved it</span></li>
-      <li class="watch-item"><span class="watch-title">The Vast of Night</span><span class="watch-year">2019</span><span class="watch-reaction">Pretty damn good</span></li>
-      <li class="watch-item"><span class="watch-title">La Chimera</span><span class="watch-year">2023</span><span class="watch-reaction">Need to think about this one</span></li>
-      <li class="watch-item"><span class="watch-title">The Passenger</span><span class="watch-year">1975</span><span class="watch-reaction">Interesting</span></li>
-      <li class="watch-item"><span class="watch-title">Kinds of Kindness</span><span class="watch-year">2024</span><span class="watch-reaction">Not for me</span></li>
-    </ol>
-  </section>
-
+  {% if collections.moviePosts.length %}
   <section class="feature-section" aria-labelledby="movie-writing-title">
     <div class="section-heading">
       <h2 id="movie-writing-title">Movie Writing</h2>
     </div>
     {{ postList(collections.moviePosts) }}
   </section>
+  {% endif %}
 </main>

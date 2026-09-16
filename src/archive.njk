@@ -11,6 +11,7 @@ description: A chronological archive of writing.
     <p>Everything, in reverse chronological order.</p>
   </header>
 
+  {% if collections.posts.length %}
   <div class="archive">
     {% for group in collections.posts | groupByYear %}
       <section class="archive-year" aria-labelledby="year-{{ group.year }}">
@@ -24,11 +25,12 @@ description: A chronological archive of writing.
                   <img src="{{ post.data.thumbnail }}" alt="{{ post.data.thumbnailAlt or post.data.heroAlt or '' }}" loading="lazy" decoding="async">
                 </a>
               {% endif %}
-              <a class="archive-entry-title" href="{{ post.url }}">{{ post.data.title }}{% if post.data.placeholder %} <span class="archive-note">Sample</span>{% endif %}</a>
+              <a class="archive-entry-title" href="{{ post.url }}">{{ post.data.title }}</a>
             </li>
           {% endfor %}
         </ol>
       </section>
     {% endfor %}
   </div>
+  {% endif %}
 </main>

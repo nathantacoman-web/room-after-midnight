@@ -15,6 +15,7 @@ function asDate(value) {
 function postsNewestFirst(collectionApi) {
   return collectionApi
     .getFilteredByGlob("src/posts/*.md")
+    .filter((post) => !post.data.draft && !post.data.placeholder)
     .sort((first, second) => second.date - first.date);
 }
 
@@ -28,6 +29,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   eleventyConfig.addGlobalData("buildYear", () => new Date().getFullYear());
+  eleventyConfig.addGlobalData("buildTimestamp", () => new Date().toISOString());
 
   eleventyConfig.addFilter("shortDate", (value) => {
     const date = asDate(value);
@@ -64,10 +66,16 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("posts", postsNewestFirst);
   eleventyConfig.addCollection("moviePosts", (collectionApi) =>
-    postsNewestFirst(collectionApi).filter((post) => post.data.category === "Movies")
+    postsNewestFirst(collectionApi).filter((post) => /^movies?$/.test(String(post.data.category || "").toLowerCase()))
+  );
+  eleventyConfig.addCollection("essayPosts", (collectionApi) =>
+    postsNewestFirst(collectionApi).filter((post) => /^essays?$/.test(String(post.data.category || "").toLowerCase()))
+  );
+  eleventyConfig.addCollection("featuredPosts", (collectionApi) =>
+    postsNewestFirst(collectionApi).filter((post) => post.data.featured === true && /^movies?$/.test(String(post.data.category || "").toLowerCase()))
   );
   eleventyConfig.addCollection("projectPosts", (collectionApi) =>
-    postsNewestFirst(collectionApi).filter((post) => post.data.category === "Projects")
+    postsNewestFirst(collectionApi).filter((post) => String(post.data.category || "").toLowerCase() === "projects")
   );
   eleventyConfig.addCollection("sitemap", (collectionApi) =>
     collectionApi.getAll().filter((item) => item.url && !item.data.excludeFromSitemap)

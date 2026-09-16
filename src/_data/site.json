@@ -9,7 +9,7 @@
   "navigation": [
     { "label": "Home", "url": "/", "key": "home" },
     { "label": "Movies", "url": "/movies/", "key": "movies" },
-    { "label": "Projects", "url": "/projects/", "key": "projects" },
+    { "label": "Essays", "url": "/essays/", "key": "essays" },
     { "label": "Archive", "url": "/archive/", "key": "archive" },
     { "label": "About", "url": "/about/", "key": "about" }
   ]

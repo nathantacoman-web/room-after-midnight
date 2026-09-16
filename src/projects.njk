@@ -2,44 +2,16 @@
 layout: layouts/base.njk
 title: Projects
 pageKey: projects
-permalink: /projects/
-description: Things I'm making, attempting, and figuring out.
+permalink: false
+excludeFromSitemap: true
 ---
 {% from "components/post-list.njk" import render as postList %}
 <main id="main-content" class="site-shell content-page">
-  <header class="page-heading">
-    <h1>Projects</h1>
-    <p>Things I'm making, attempting, and figuring out.</p>
-  </header>
-
-  <ol class="project-list">
-    <li class="project-entry">
-      <div><span class="status-label">In progress</span></div>
-      <div>
-        <h2>A short film about waiting</h2>
-        <p>A small narrative film built around an empty bus stop, changing weather, and the things people rehearse before they speak.</p>
-      </div>
-    </li>
-    <li class="project-entry">
-      <div><span class="status-label">Experiment</span></div>
-      <div>
-        <h2>One room, twelve bits of light</h2>
-        <p>A filmmaking exercise using one fixed camera position and only the light already moving through the room.</p>
-      </div>
-    </li>
-    <li class="project-entry">
-      <div><span class="status-label">Finished</span></div>
-      <div>
-        <h2>A very small animated weather report</h2>
-        <p>A looping animation about the particular sort of clouds that make an ordinary afternoon feel briefly cinematic.</p>
-      </div>
-    </li>
-  </ol>
-
-  <section id="project-updates" class="feature-section" aria-labelledby="project-updates-title">
-    <div class="section-heading">
-      <h2 id="project-updates-title">Project Updates</h2>
-    </div>
+  <header class="page-heading"><h1>Projects</h1></header>
+  {% if collections.projectPosts.length %}
+  <section class="feature-section" aria-labelledby="project-updates-title">
+    <div class="section-heading"><h2 id="project-updates-title">Project Updates</h2></div>
     {{ postList(collections.projectPosts) }}
   </section>
+  {% endif %}
 </main>

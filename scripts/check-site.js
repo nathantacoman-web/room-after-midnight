@@ -44,9 +44,8 @@ const requiredFiles = [
   "about/index.html",
   "archive/index.html",
   "movies/index.html",
-  "projects/index.html",
-  "posts/stormy-weather/index.html",
-  "posts/dredd-have-you-watched-it/index.html",
+  "essays/index.html",
+  "thanks/index.html",
   "404.html",
   "feed.xml",
   "sitemap.xml",
@@ -67,8 +66,8 @@ const sitemap = await readFile(path.join(outputDirectory, "sitemap.xml"), "utf8"
 const robots = await readFile(path.join(outputDirectory, "robots.txt"), "utf8");
 const cname = await readFile(path.join(outputDirectory, "CNAME"), "utf8");
 
-if (!feed.includes("<feed ") || !feed.includes("Stormy Weather")) addError("Atom feed is missing expected post content.");
-if (!sitemap.includes("<urlset") || !sitemap.includes("/posts/stormy-weather/")) addError("Sitemap is missing expected URLs.");
+if (!feed.includes("<feed ") || !feed.includes("<title>Driveway Avenue</title>")) addError("Atom feed is missing publication metadata.");
+if (!sitemap.includes("<urlset") || !sitemap.includes("/movies/") || !sitemap.includes("/essays/")) addError("Sitemap is missing category URLs.");
 if (!robots.includes("Sitemap:")) addError("robots.txt does not reference the sitemap.");
 
 const siteUrl = "https://drivewayavenue.com";
@@ -119,10 +118,11 @@ for (const filePath of htmlFiles) {
   }
 }
 
-const stormyWeather = await readFile(path.join(outputDirectory, "posts/stormy-weather/index.html"), "utf8");
-const dredd = await readFile(path.join(outputDirectory, "posts/dredd-have-you-watched-it/index.html"), "utf8");
-if (!stormyWeather.includes("<title>Stormy Weather — Driveway Avenue</title>")) addError("Stormy Weather title is not branded correctly.");
-if (!dredd.includes("<title>Dredd, Have You Watched It? — Driveway Avenue</title>")) addError("Dredd title is not branded correctly.");
+for (const filePath of htmlFiles.filter((filePath) => path.relative(outputDirectory, filePath).startsWith("posts/"))) {
+  const postUrl = "/" + path.relative(outputDirectory, filePath).split(path.sep).join("/").replace(/index\.html$/, "");
+  if (!feed.includes(`${siteUrl}${postUrl}`)) addError(`${postUrl}: missing from Atom feed.`);
+  if (!sitemap.includes(`${siteUrl}${postUrl}`)) addError(`${postUrl}: missing from sitemap.`);
+}
 
 if (errors.length) {
   console.error("Site checks failed:\n" + errors.map((error) => `- ${error}`).join("\n"));

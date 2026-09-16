@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Essays
+pageKey: essays
+permalink: /essays/
+description: Essays on any subject.
+---
+{% from "components/post-list.njk" import render as postList %}
+<main id="main-content" class="site-shell content-page">
+  <header class="page-heading">
+    <h1>Essays</h1>
+  </header>
+  {% if collections.essayPosts.length %}
+  <section class="feature-section" aria-labelledby="essay-writing-title">
+    <div class="section-heading"><h2 id="essay-writing-title">Essay Writing</h2></div>
+    {{ postList(collections.essayPosts) }}
+  </section>
+  {% endif %}
+</main>

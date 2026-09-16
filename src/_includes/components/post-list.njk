@@ -1,11 +1,12 @@
 {% macro render(items) %}
+  {% if items.length %}
   <ol class="post-list">
     {% for post in items %}
       <li class="post-preview{% if post.data.thumbnail %} post-preview--with-image{% endif %}">
         <div class="post-meta">
+          <span class="post-number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
           <div class="post-labels">
             <span class="post-category">{{ post.data.category or "Notes" }}</span>
-            {% if post.data.placeholder %}<span class="post-note">Sample</span>{% endif %}
           </div>
           <time datetime="{{ post.date | htmlDate }}">{{ post.date | shortDate }}</time>
         </div>
@@ -21,4 +22,5 @@
       </li>
     {% endfor %}
   </ol>
+  {% endif %}
 {% endmacro %}

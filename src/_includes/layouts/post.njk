@@ -8,7 +8,6 @@ layout: layouts/base.njk
         <span class="post-category">{{ category or "Notes" }}</span>
         {% if movieYear %}<span class="post-note">{{ movieYear }}</span>{% endif %}
         {% if projectStatus %}<span class="post-note">{{ projectStatus }}</span>{% endif %}
-        {% if placeholder %}<span class="post-note">Sample post</span>{% endif %}
       </div>
       <h1>{{ title }}</h1>
       {% if description %}<p class="article-deck">{{ description }}</p>{% endif %}
@@ -16,9 +15,9 @@ layout: layouts/base.njk
     </header>
 
     {% if heroImage or featuredImage %}
-      <figure class="article-hero">
+      <figure class="article-hero{% if heroImageLayout == 'portrait' %} article-hero--portrait{% endif %}">
         <div class="article-hero-media">
-          <img src="{{ heroImage or featuredImage }}" alt="{{ heroAlt or featuredImageAlt or '' }}" loading="eager" decoding="async">
+          <img src="{{ heroImage or featuredImage }}" alt="{{ heroAlt or featuredImageAlt or '' }}" loading="eager" decoding="async"{% if heroImageWidth and heroImageHeight %} width="{{ heroImageWidth }}" height="{{ heroImageHeight }}"{% endif %}>
         </div>
         {% if heroImageCaption or featuredImageCaption %}<figcaption>{{ heroImageCaption or featuredImageCaption }}</figcaption>{% endif %}
       </figure>
