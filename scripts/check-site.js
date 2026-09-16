@@ -71,11 +71,11 @@ if (!feed.includes("<feed ") || !feed.includes("Stormy Weather")) addError("Atom
 if (!sitemap.includes("<urlset") || !sitemap.includes("/posts/stormy-weather/")) addError("Sitemap is missing expected URLs.");
 if (!robots.includes("Sitemap:")) addError("robots.txt does not reference the sitemap.");
 
-const siteUrl = "https://roomaftermidnight.com";
+const siteUrl = "https://drivewayavenue.com";
 if (!feed.includes(`<id>${siteUrl}</id>`) || !feed.includes(`${siteUrl}/feed.xml`)) addError("Atom feed does not use the production URL.");
 if (!sitemap.includes(siteUrl)) addError("Sitemap does not use the production URL.");
 if (!robots.includes(`${siteUrl}/sitemap.xml`)) addError("robots.txt does not use the production URL.");
-if (cname.trim() !== "roomaftermidnight.com") addError("CNAME does not use the production domain.");
+if (cname.trim() !== "drivewayavenue.com") addError("CNAME does not use the production domain.");
 
 const allFiles = await filesIn(outputDirectory);
 const htmlFiles = allFiles.filter((filePath) => filePath.endsWith(".html"));
@@ -86,7 +86,7 @@ for (const filePath of htmlFiles) {
 
   if (!/<html[^>]+lang="en"/i.test(html)) addError(`${label}: missing document language.`);
   if (!/<title>[^<]+<\/title>/i.test(html)) addError(`${label}: missing title.`);
-  if (!html.includes("Room After Midnight")) addError(`${label}: missing official site name.`);
+  if (!html.includes("Driveway Avenue")) addError(`${label}: missing official site name.`);
   if (!hasMeta(html, "name", "description")) addError(`${label}: missing meta description.`);
   if (!/<link[^>]+rel="canonical"/i.test(html)) addError(`${label}: missing canonical URL.`);
   if (!html.includes(`rel="canonical" href="${siteUrl}`)) addError(`${label}: canonical URL does not use the production domain.`);
@@ -121,8 +121,8 @@ for (const filePath of htmlFiles) {
 
 const stormyWeather = await readFile(path.join(outputDirectory, "posts/stormy-weather/index.html"), "utf8");
 const dredd = await readFile(path.join(outputDirectory, "posts/dredd-have-you-watched-it/index.html"), "utf8");
-if (!stormyWeather.includes("<title>Stormy Weather — Room After Midnight</title>")) addError("Stormy Weather title is not branded correctly.");
-if (!dredd.includes("<title>Dredd, Have You Watched It? — Room After Midnight</title>")) addError("Dredd title is not branded correctly.");
+if (!stormyWeather.includes("<title>Stormy Weather — Driveway Avenue</title>")) addError("Stormy Weather title is not branded correctly.");
+if (!dredd.includes("<title>Dredd, Have You Watched It? — Driveway Avenue</title>")) addError("Dredd title is not branded correctly.");
 
 if (errors.length) {
   console.error("Site checks failed:\n" + errors.map((error) => `- ${error}`).join("\n"));

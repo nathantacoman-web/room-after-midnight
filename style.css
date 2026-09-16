@@ -129,17 +129,6 @@ input {
   margin-top: calc(0.04em + 1px);
 }
 
-.masthead-streetlight {
-  position: absolute;
-  right: 0.07em;
-  bottom: 0.96em;
-  width: 1.65em;
-  height: 1.72em;
-  color: var(--color-text);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
 .masthead::after {
   content: "";
   position: absolute;
@@ -919,10 +908,6 @@ main {
   .masthead {
     font-size: clamp(1.72rem, 8.8vw, 2.1rem);
     line-height: 0.88;
-  }
-
-  .masthead-streetlight {
-    display: none;
   }
 
   .site-nav {

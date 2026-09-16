@@ -1,4 +1,4 @@
-# Room After Midnight
+# Driveway Avenue
 
 This is a lightweight Eleventy site. Edit source files in `src/`; Eleventy writes the publishable result to `_site/`.
 
@@ -77,7 +77,7 @@ featuredImageCaption: "A storm arriving."
 
 The site name, tagline, author, navigation, social image, and production URL live in `src/_data/site.json`.
 
-`site.url` is `https://roomaftermidnight.com`. That one setting supplies canonical URLs, the Atom feed, sitemap URLs, robots.txt sitemap reference, and social metadata.
+`site.url` is `https://drivewayavenue.com`. That one setting supplies canonical URLs, the Atom feed, sitemap URLs, robots.txt sitemap reference, and social metadata.
 
 Change the dusty-blue accent palette in the custom properties at the top of `style.css`:
 
@@ -91,4 +91,4 @@ The reusable HTML shell is in `src/_includes/layouts/base.njk`, article pages us
 
 ## GitHub Pages deployment
 
-The workflow in `.github/workflows/deploy.yml` installs dependencies with `npm ci`, runs the production build, and deploys `_site/` through GitHub Pages. The generated `CNAME` file supplies `roomaftermidnight.com` to GitHub Pages. Before enabling it, create the repository, set **Settings → Pages → Source** to **GitHub Actions**, and point the custom domain to this site in GitHub Pages settings.
+The workflow in `.github/workflows/deploy.yml` installs dependencies with `npm ci`, runs the production build, and deploys `_site/` through GitHub Pages. The generated `CNAME` file supplies `drivewayavenue.com` to GitHub Pages. Before enabling it, create the repository, set **Settings → Pages → Source** to **GitHub Actions**, and point the custom domain to this site in GitHub Pages settings.
