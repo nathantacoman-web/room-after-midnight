@@ -11,6 +11,8 @@
   <meta name="theme-color" content="#f2ecdd">
   {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   <title>{{ documentTitle }}</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicon.svg">
   <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} feed" href="{{ '/feed.xml' | absoluteUrl(site.url) }}">
   <meta property="og:site_name" content="{{ site.name }}">
