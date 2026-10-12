@@ -105,7 +105,7 @@ p { text-wrap: pretty; }
 .stack-entry .eyebrow { grid-row: span 2; margin: .3rem 0 0; color: var(--blue); }
 .stack-entry h3 { margin: 0; font: 600 1.5rem/1.15 var(--serif); }
 .stack-entry p { margin: 0; font: .9rem/1.5 var(--serif); }
-.stack-quote { display: block; margin-top: .35rem; color: #38342d; font: italic .85rem/1.45 var(--serif); }
+.stack-quote { display: block; margin-top: .35rem; color: #38342d; font: italic .95rem/1.45 var(--serif); }
 .text-link { font-size: .75rem; font-weight: 600; }
 .workbench { background: var(--yellow); padding: 2rem; position: relative; margin-top: 1rem; border: 1px solid var(--ink); box-shadow: -5px 5px 0 var(--ink); }
 .workbench::before { content: ""; position: absolute; width: 4rem; height: 1.2rem; background: #d6cdb1; opacity: .8; top: -.6rem; left: 40%; transform: rotate(-8deg); }
@@ -129,7 +129,6 @@ p { text-wrap: pretty; }
 .page-heading { padding-block: 3rem 2.5rem; max-width: 52rem; }
 .page-heading h1, .about-layout h1 { font: 800 clamp(3.75rem, 8vw, 7rem)/.95 var(--display); text-transform: uppercase; margin-bottom: 1rem; }
 .page-heading p { font: 1.25rem/1.5 var(--serif); margin: 0; }
-.page-heading .essays-blurb { font-size: 1rem; font-weight: 400; line-height: 1.6; }
 .thanks-page .page-heading p + p { margin-top: 1rem; }
 .content-page, .archive { padding-bottom: 5rem; }
 .feature-section + .feature-section, .project-list + .feature-section { margin-top: 3.5rem; }
