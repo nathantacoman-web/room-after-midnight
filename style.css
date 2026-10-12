@@ -122,6 +122,8 @@ p { text-wrap: pretty; }
 .beehiiv-embed { width: 100%; max-width: 28rem; min-width: 0; }
 .beehiiv-embed iframe { display: block; width: 100%; max-width: 100%; border: 0; }
 .newsletter-fallback { font-size: .7rem; margin: 1rem 0 0; color: var(--muted); }
+.newsletter.support-section { grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; margin-block: 2rem; padding-block: clamp(.75rem, 2vw, 1.5rem); border-top-width: 3px; }
+.support-section h2 { font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 700; line-height: 1; margin-bottom: .75rem; }
 .page-heading { padding-block: 3rem 2.5rem; max-width: 52rem; }
 .page-heading h1, .about-layout h1 { font: 800 clamp(3.75rem, 8vw, 7rem)/.95 var(--display); text-transform: uppercase; margin-bottom: 1rem; }
 .page-heading p { font: 1.25rem/1.5 var(--serif); margin: 0; }
@@ -208,6 +210,7 @@ p { text-wrap: pretty; }
   .stack-entry .eyebrow { grid-row: span 2; }
   .workbench { box-shadow: -3px 3px 0 var(--ink); padding: 1.5rem; }
   .newsletter { margin-block: 3rem; gap: 2rem; }
+  .newsletter.support-section { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .page-heading { padding-block: 2rem; }
   .post-preview, .post-preview--with-image, .project-entry, .archive-year { grid-template-columns: 1fr; gap: 1rem; }
   .post-number { display: none; }
